@@ -2,17 +2,28 @@ package desafio;
 
 import java.util.Arrays;
 
+/**
+ * 
+ * @author felipe.silva (felipe.silva@unigranrio.br)
+ * @date 01/08/2020
+ */
+
 public class TestOne {
 
 	public static void main(String[] args) {
 
 		int[] missingNumbers = getMissingNumbers();
-		
-		for(int i = 0; i < missingNumbers.length; i++ ) {
+
+		for (int i = 0; i < missingNumbers.length; i++) {
 			System.out.println(missingNumbers[i]);
 		}
 
 	}
+
+	/**
+	 * 
+	 * @return int[]
+	 */
 
 	private static int[] getMissingNumbers() {
 		int count = 0, min = 1, max = 50;
@@ -21,24 +32,23 @@ public class TestOne {
 
 		for (int j = min; j <= max; j++) {
 			boolean notExists = false;
-			
+
 			for (int i = 0; i < arr.length; i++) {
 				if (arr[i] == j) {
 					break;
 				}
-				if (i == (arr.length-1))
+				if (i == (arr.length - 1))
 					notExists = true;
 			}
-			
+
 			if (notExists) {
-				System.out.println("position: " + count + " / number: " + j);
 				saveNumbers[count] = j;
 				count++;
-				notExists = false;
 			}
 		}
-		
-		saveNumbers = Arrays.copyOf(saveNumbers , count);
+
+		// vector size adjustment
+		saveNumbers = Arrays.copyOf(saveNumbers, count);
 
 		return saveNumbers;
 	}
